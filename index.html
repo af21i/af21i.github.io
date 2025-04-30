@@ -26,7 +26,7 @@
       position: fixed;
       display: flex;
       flex-direction: column;
-      align-items: center;
+      justify-content: space-between;
       border-right: 1px solid #333;
     }
 
@@ -35,11 +35,19 @@
       font-family: 'Playfair Display', serif;
       font-size: 1.8em;
       margin-bottom: 2rem;
+      text-align: center;
     }
 
-    nav a {
+    nav {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex-grow: 1;
+    }
+
+    nav a:not(.linkedin-button) {
       display: block;
-      margin: 1rem 0;
+      margin: 0.5rem 0;
       padding: 0.75rem 1rem;
       text-decoration: none;
       background-color: #2a2a2a;
@@ -51,30 +59,50 @@
       transition: all 0.3s ease;
     }
 
-    nav a:hover {
+    nav a:hover:not(.linkedin-button) {
       background-color: #bb86fc;
       color: #121212;
     }
 
+    .linkedin-container {
+      text-align: center;
+      padding-top: 2rem;
+    }
+
+    .linkedin-text {
+      margin-bottom: 0.5rem;
+      font-size: 0.95em;
+      color: #bbb;
+    }
+
     .linkedin-button {
-      margin-top: auto;
-      padding: 0.75rem;
-      border-radius: 8px;
-      display: flex;
-      justify-content: center;
+      display: inline-flex;
       align-items: center;
+      justify-content: center;
+      background-color: #0077b5;
+      color: white;
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      gap: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    .linkedin-button:hover {
+      background-color: #005f91;
     }
 
     .linkedin-button img {
-      width: 32px;
-      height: 32px;
+      width: 20px;
+      height: 20px;
+      filter: invert(100%);
     }
 
     main {
-      margin-left: 220px; /* offset for sidebar */
+      margin-left: 220px;
       padding: 3rem 2rem;
       max-width: 800px;
-      flex-grow: 1;
     }
 
     section {
@@ -102,13 +130,6 @@
       color: #d0c6e0;
     }
 
-    footer {
-      text-align: center;
-      margin-top: 4rem;
-      font-size: 0.9em;
-      color: #666;
-    }
-
     .divider {
       height: 1px;
       background-color: #333;
@@ -119,21 +140,26 @@
 <body>
 
   <aside>
-    <h2>Portfolio</h2>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-    </nav>
+    <div>
+      <h2>Portfolio</h2>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+      </nav>
+    </div>
 
-    <a
-      href="https://www.linkedin.com/in/afeef-islam-622aba349/"
-      target="_blank"
-      class="linkedin-button"
-    >
-      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" style="filter: invert(100%);">
-      <span>LinkedIn</span>
-    </a>
+    <div class="linkedin-container">
+      <div class="linkedin-text">Connect with me on LinkedIn</div>
+      <a
+        href="https://www.linkedin.com/in/afeef-islam-622aba349/"
+        target="_blank"
+        class="linkedin-button"
+      >
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn Logo" />
+        <span>LinkedIn</span>
+      </a>
+    </div>
   </aside>
 
   <main>
@@ -147,29 +173,17 @@
 
     <section id="about">
       <h2>About Me</h2>
-      <p>
-        WIP
-        <br><br><br><br><br><br><br><br><br><br>
-        <br><br><br><br>
-      </p>
+      <p>WIP</p>
     </section>
 
     <section id="experience">
       <h2>Experience</h2>
-      <p>
-        WIP
-        <br><br><br><br><br><br><br><br><br><br>
-        <br><br><br><br>
-      </p>
+      <p>WIP</p>
     </section>
 
     <section id="projects">
       <h2>Projects</h2>
-      <p>
-        WIP 
-        <br><br><br><br><br><br><br><br><br><br>
-        <br><br><br><br><br><br><br><br>
-      </p>
+      <p>WIP</p>
     </section>
   </main>
 
