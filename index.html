@@ -8,32 +8,127 @@
   <style>
     body {
       margin: 0;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background-color: #121212; 
-      color: #e0d7f4; 
+      background-color: #121212;
+      color: #e0d7f4;
       font-family: 'Roboto', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background-color: #1e1e1e;
+      padding: 1.5rem 0;
       text-align: center;
+      border-bottom: 1px solid #333;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h2 {
+      margin: 0;
+      font-size: 1.8em;
+      color: #bb86fc;
+      font-family: 'Playfair Display', serif;
+    }
+
+    nav {
+      margin-top: 0.5rem;
+    }
+
+    nav a {
+      color: #c3b8d7;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #bb86fc;
+    }
+
+    section {
+      max-width: 800px;
+      margin: 4rem auto;
+      padding: 0 1rem;
+    }
+
+    h1, h2 {
+      font-family: 'Playfair Display', serif;
+      color: #bb86fc;
     }
 
     h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 4em;
-      color: #bb86fc; 
-      margin: 0;
+      font-size: 3em;
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 2em;
+      margin-bottom: 1rem;
     }
 
     p {
-      font-size: 1.5em;
-      color: #c3b8d7;
+      font-size: 1.1em;
+      line-height: 1.6;
+      color: #d0c6e0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9em;
+      color: #666;
+    }
+
+    .divider {
+      height: 1px;
+      background-color: #333;
+      margin: 3rem 0;
     }
   </style>
 </head>
 <body>
-  <h1>Portfolio</h1>
-  <p>Work In Progress.</p>
+
+  <header>
+    <h2>Afeef Islam</h2>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h1>Portfolio</h1>
+      <p style="text-align: center;">Work In Progress.</p>
+    </section>
+
+    <div class="divider"></div>
+
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        WIP
+      </p>
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+      <p>
+      WIP
+      </p>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <p>
+      WIP 
+      </p>
+    </section>
+  </main>
+
 </body>
 </html>
