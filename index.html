@@ -45,7 +45,7 @@
       flex-grow: 1;
     }
 
-    nav a:not(.linkedin-button) {
+    nav a {
       display: block;
       margin: 0.5rem 0;
       padding: 0.75rem 1rem;
@@ -59,7 +59,7 @@
       transition: all 0.3s ease;
     }
 
-    nav a:hover:not(.linkedin-button) {
+    nav a:hover {
       background-color: #bb86fc;
       color: #121212;
     }
@@ -75,25 +75,28 @@
       color: #bbb;
     }
 
-    .linkedin-button {
+    .social-button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      background-color: #0077b5;
+      background-color: #2a2a2a;
       color: white;
       padding: 0.6rem 1rem;
       border-radius: 8px;
       text-decoration: none;
       font-weight: bold;
       gap: 10px;
+      width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 1rem;
       transition: background-color 0.3s ease;
     }
 
-    .linkedin-button:hover {
-      background-color: #005f91;
+    .social-button:hover {
+      background-color: #444;
     }
 
-    .linkedin-button img {
+    .social-button img {
       width: 20px;
       height: 20px;
       filter: invert(100%);
@@ -154,21 +157,19 @@
       <a
         href="https://www.linkedin.com/in/afeef-islam-622aba349/"
         target="_blank"
-        class="linkedin-button"
+        class="social-button"
       >
         <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn Logo" />
         <span>LinkedIn</span>
       </a>
       <a
-        href="https://github.com/af21i"
+        href="https://github.com/YOUR_GITHUB_USERNAME"
         target="_blank"
-        class="linkedin-button"
-        style="margin-top: 1rem; background-color: #333;"
+        class="social-button"
       >
         <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub Logo" />
         <span>GitHub</span>
       </a>
-</div>
     </div>
   </aside>
 
