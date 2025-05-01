@@ -7,28 +7,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
-    :root {
-      --bg: #121212;
-      --text: #e0d7f4;
-      --accent: #bb86fc;
-      --card: #1e1e1e;
-      --hover: #bb86fc;
-      --button-bg: #2a2a2a;
-      --button-text: #d0c6e0;
-      --border: #333;
-    }
-
-    body.light-mode {
-      --bg: #f4f4f4;
-      --text: #2a2a2a;
-      --accent: #6200ea;
-      --card: #ffffff;
-      --hover: #d1c4e9;
-      --button-bg: #e0e0e0;
-      --button-text: #2a2a2a;
-      --border: #ccc;
-    }
-
     * {
       box-sizing: border-box;
     }
@@ -36,27 +14,26 @@
     body {
       margin: 0;
       display: flex;
-      background-color: var(--bg);
-      color: var(--text);
+      background-color: #121212;
+      color: #e0d7f4;
       font-family: 'Roboto', sans-serif;
       overflow-x: hidden;
-      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     aside {
       width: 220px;
-      background-color: var(--card);
+      background-color: #1e1e1e;
       height: 100vh;
       padding: 2rem 1rem;
       position: fixed;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      border-right: 1px solid var(--border);
+      border-right: 1px solid #333;
     }
 
     aside h2 {
-      color: var(--accent);
+      color: #bb86fc;
       font-family: 'Fuzzy Bubbles', cursive;
       font-size: 1.8em;
       margin-bottom: 2rem;
@@ -75,8 +52,8 @@
       margin: 0.5rem 0;
       padding: 0.75rem 1rem;
       text-decoration: none;
-      background-color: var(--button-bg);
-      color: var(--button-text);
+      background-color: #2a2a2a;
+      color: #d0c6e0;
       font-weight: bold;
       text-align: center;
       border-radius: 8px;
@@ -85,8 +62,8 @@
     }
 
     nav a:hover {
-      background-color: var(--hover);
-      color: var(--bg);
+      background-color: #bb86fc;
+      color: #121212;
       transform: scale(1.05);
     }
 
@@ -98,15 +75,15 @@
     .linkedin-text {
       margin-bottom: 0.5rem;
       font-size: 0.95em;
-      color: var(--button-text);
+      color: #bbb;
     }
 
     .social-button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      background-color: var(--button-bg);
-      color: var(--button-text);
+      background-color: #2a2a2a;
+      color: #d0c6e0;
       padding: 0.75rem 1rem;
       border-radius: 8px;
       text-decoration: none;
@@ -118,8 +95,8 @@
     }
 
     .social-button:hover {
-      background-color: var(--hover);
-      color: var(--bg);
+      background-color: #bb86fc;
+      color: #121212;
       transform: scale(1.05);
     }
 
@@ -132,7 +109,8 @@
     main {
       margin-left: 220px;
       padding: 3rem 2rem;
-      width: 100%;
+      max-width: none;
+      width: calc(100% - 220px);
     }
 
     section {
@@ -141,7 +119,7 @@
 
     h1, h2 {
       font-family: 'Fuzzy Bubbles', cursive;
-      color: var(--accent);
+      color: #bb86fc;
     }
 
     h1 {
@@ -161,7 +139,7 @@
     }
 
     .section-header i {
-      color: var(--accent);
+      color: #bb86fc;
       width: 28px;
       height: 28px;
     }
@@ -169,12 +147,12 @@
     p {
       font-size: 1.1em;
       line-height: 1.6;
-      color: var(--text);
+      color: #d0c6e0;
     }
 
     .divider {
       height: 1px;
-      background-color: var(--border);
+      background-color: #333;
       margin: 3rem 0;
     }
 
@@ -189,17 +167,29 @@
       transform: none;
     }
 
+    .trail {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(187, 134, 252, 0.3);
+      box-shadow: 0 0 10px 4px rgba(187, 134, 252, 0.4);
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+    }
+
     .project-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
     }
 
     .project-card {
-      background-color: var(--card);
+      background-color: #1e1e1e;
       padding: 1rem;
       border-radius: 10px;
-      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 0 8px rgba(187, 134, 252, 0.2);
       transition: all 0.3s ease;
     }
 
@@ -212,8 +202,8 @@
       display: inline-block;
       margin-top: 1rem;
       padding: 0.5rem 1rem;
-      background-color: var(--button-bg);
-      color: var(--accent);
+      background-color: #2a2a2a;
+      color: #bb86fc;
       text-decoration: none;
       font-weight: bold;
       border-radius: 6px;
@@ -221,46 +211,14 @@
     }
 
     .view-code-btn:hover {
-      background-color: var(--accent);
-      color: var(--bg);
+      background-color: #bb86fc;
+      color: #121212;
     }
 
-    .theme-toggle {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background-color: var(--button-bg);
-      color: var(--accent);
-      padding: 0.5rem 1rem;
-      border-radius: 25px;
-      cursor: pointer;
-      border: none;
-      gap: 0.5rem;
-      width: 100%;
-      transition: background-color 0.3s ease;
-      font-weight: bold;
-    }
-
-    .theme-toggle:hover {
-      background-color: var(--hover);
-      color: var(--bg);
-    }
-
-    .theme-toggle svg {
-      width: 20px;
-      height: 20px;
-    }
-
-    .trail {
-      position: fixed;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: rgba(187, 134, 252, 0.3);
-      box-shadow: 0 0 10px 4px rgba(187, 134, 252, 0.4);
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
+    @media (min-width: 1200px) {
+      .project-grid {
+        grid-template-columns: repeat(5, 1fr);
+      }
     }
   </style>
 </head>
@@ -269,9 +227,6 @@
   <aside>
     <div>
       <h2>Portfolio</h2>
-      <button class="theme-toggle" id="themeToggle" title="Toggle light/dark mode">
-        <i data-lucide="moon"></i><span>Dark Mode</span>
-      </button>
       <nav>
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
@@ -302,69 +257,59 @@
 
     <section id="about" class="fade-in-section">
       <h2 class="section-header"><i data-lucide="user"></i>About Me</h2>
-      <p>WIP</p>
+      <p>WIP<br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
     </section>
 
     <section id="experience" class="fade-in-section">
       <h2 class="section-header"><i data-lucide="briefcase"></i>Experience</h2>
-      <p>WIP</p>
+      <p>WIP<br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
     </section>
 
     <section id="projects" class="fade-in-section">
-      <h2 class="section-header"><i data-lucide="code"></i>Projects</h2>
-      <div class="project-grid">
-        <div class="project-card">
-          <h3>Personal Portfolio</h3>
-          <p>Short description of this website. WIP</p>
-          <a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a>
-        </div>
-        <div class="project-card">
-          <h3>Another Project</h3>
-          <p>Description for another project. WIP</p>
-          <a class="view-code-btn" href="#" target="_blank">View Code</a>
-        </div>
-        <div class="project-card">
-          <h3>Third Project</h3>
-          <p>Description for third project. WIP</p>
-          <a class="view-code-btn" href="#" target="_blank">View Code</a>
-        </div>
-      </div>
-    </section>
+  <h2 class="section-header"><i data-lucide="code"></i>Projects</h2>
+
+  <div class="project-grid">
+    <div class="project-card">
+      <h3>Personal Portfolio</h3>
+      <p>I will make a short description of this website. WIP</p>
+      <a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a>
+    </div>
+
+    <div class="project-card">
+      <h3>Personal Portfolio</h3>
+      <p>I will make a short description of this website. WIP</p>
+      <a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a>
+    </div>
+
+    <div class="project-card">
+      <h3>Personal Portfolio</h3>
+      <p>I will make a short description of this website. WIP</p>
+      <a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a>
+    </div>
+
+    <div class="project-card">
+      <h3>Personal Portfolio</h3>
+      <p>I will make a short description of this website. WIP</p>
+      <a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a>
+    </div>
+
+    <div class="project-card">
+      <h3>Personal Portfolio</h3>
+      <p>I will make a short description of this website. WIP</p>
+      <a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a>
+    </div>
+
+    <div class="project-card">
+      <h3>Personal Portfolio</h3>
+      <p>I will make a short description of this website. WIP</p>
+      <a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a>
+    </div>
+  </div>
+</section>
   </main>
 
-  <!-- Mouse trail elements -->
-  <script>
-    const trail = [];
-    for (let i = 0; i < 12; i++) {
-      const div = document.createElement("div");
-      div.classList.add("trail");
-      document.body.appendChild(div);
-      trail.push(div);
-    }
+  <div class="cursor-glow" id="cursorGlow"></div>
 
-    let mouse = { x: 0, y: 0 };
-    window.addEventListener("mousemove", e => {
-      mouse.x = e.clientX;
-      mouse.y = e.clientY;
-    });
-
-    function animateTrail() {
-      let x = mouse.x, y = mouse.y;
-      trail.forEach((dot, index) => {
-        const next = trail[index + 1] || trail[0];
-        dot.style.left = x + "px";
-        dot.style.top = y + "px";
-        const dx = next.offsetLeft - x;
-        const dy = next.offsetTop - y;
-        x += dx * 0.25;
-        y += dy * 0.25;
-      });
-      requestAnimationFrame(animateTrail);
-    }
-    animateTrail();
-  </script>
-
-  <!-- Section animation + toggle theme -->
   <script>
     const faders = document.querySelectorAll('.fade-in-section');
     const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
@@ -377,22 +322,26 @@
     }, appearOptions);
     faders.forEach(fader => appearOnScroll.observe(fader));
 
-    const toggleBtn = document.getElementById('themeToggle');
-    toggleBtn.addEventListener('click', () => {
-      document.body.classList.toggle('light-mode');
-      const icon = toggleBtn.querySelector('i');
-      const label = toggleBtn.querySelector('span');
-      if (document.body.classList.contains('light-mode')) {
-        icon.setAttribute('data-lucide', 'sun');
-        label.textContent = 'Light Mode';
-      } else {
-        icon.setAttribute('data-lucide', 'moon');
-        label.textContent = 'Dark Mode';
-      }
-      lucide.createIcons();
+    const cursor = document.getElementById('cursorGlow');
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = `${e.clientX}px`;
+      cursor.style.top = `${e.clientY}px`;
+
+      const trail = document.createElement('div');
+      trail.classList.add('trail');
+      trail.style.left = `${e.clientX}px`;
+      trail.style.top = `${e.clientY}px`;
+      document.body.appendChild(trail);
+
+      setTimeout(() => {
+        trail.style.opacity = 0;
+        trail.style.transition = 'opacity 0.5s ease-out';
+        setTimeout(() => trail.remove(), 500);
+      }, 10);
     });
 
     lucide.createIcons();
   </script>
+
 </body>
 </html>
