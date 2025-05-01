@@ -153,20 +153,17 @@
       transform: none;
     }
 
-    .cursor-trail {
+    .trail {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 10px;
-      height: 10px;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
-      background: rgba(187, 134, 252, 0.5);
+      background: rgba(187, 134, 252, 0.3);
+      box-shadow: 0 0 10px 4px rgba(187, 134, 252, 0.4);
       pointer-events: none;
+      z-index: 9998;
       transform: translate(-50%, -50%);
-      z-index: 9999;
-      transition: transform 0.1s ease-out;
     }
-
   </style>
 </head>
 <body>
@@ -191,6 +188,7 @@
         <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn Logo" />
         <span>LinkedIn</span>
       </a>
+
       <a
         href="https://github.com/af21i"
         target="_blank"
@@ -203,37 +201,59 @@
   </aside>
 
   <main>
-    <section>
+    <section class="fade-in-section">
       <h1>Afeef Islam</h1>
-      <p style="text-align: center;">Computer Engineering Student at Toronto Metropolitan University <br></p>
+      <p style="text-align: center;">Computer Engineering Student at Toronto Metropolitan University</p>
     </section>
 
     <div class="divider"></div>
 
-    <section id="about">
+    <section id="about" class="fade-in-section">
       <h2>About Me</h2>
-      <p>WIP</p>
+      <p>WIP<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
     </section>
 
-    <section id="experience">
+    <section id="experience" class="fade-in-section">
       <h2>Experience</h2>
-      <p>WIP</p>
+      <p>WIP<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
     </section>
 
-    <section id="projects">
+    <section id="projects" class="fade-in-section">
       <h2>Projects</h2>
-      <p>WIP</p>
+      <p>WIP<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
     </section>
   </main>
 
-  <script>
-    const cursorTrail = document.createElement('div');
-    cursorTrail.classList.add('cursor-trail');
-    document.body.appendChild(cursorTrail);
+  <div class="cursor-glow" id="cursorGlow"></div>
 
-    document.addEventListener('mousemove', (event) => {
-      cursorTrail.style.left = `${event.pageX}px`;
-      cursorTrail.style.top = `${event.pageY}px`;
+  <script>
+    const faders = document.querySelectorAll('.fade-in-section');
+    const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      });
+    }, appearOptions);
+    faders.forEach(fader => appearOnScroll.observe(fader));
+
+    const cursor = document.getElementById('cursorGlow');
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = `${e.clientX}px`;
+      cursor.style.top = `${e.clientY}px`;
+
+      const trail = document.createElement('div');
+      trail.classList.add('trail');
+      trail.style.left = `${e.clientX}px`;
+      trail.style.top = `${e.clientY}px`;
+      document.body.appendChild(trail);
+
+      setTimeout(() => {
+        trail.style.opacity = 0;
+        trail.style.transition = 'opacity 0.5s ease-out';
+        setTimeout(() => trail.remove(), 500);
+      }, 10);
     });
   </script>
 
