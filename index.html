@@ -18,6 +18,44 @@
       color: #e0d7f4;
       font-family: 'Roboto', sans-serif;
       overflow-x: hidden;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Light mode */
+    body.light-mode {
+      background-color: #ffffff;
+      color: #121212;
+    }
+
+    body.light-mode aside {
+      background-color: #f0f0f0;
+      border-right: 1px solid #ccc;
+    }
+
+    body.light-mode nav a,
+    body.light-mode .social-button {
+      background-color: #e0e0e0;
+      color: #121212;
+    }
+
+    body.light-mode nav a:hover,
+    body.light-mode .social-button:hover {
+      background-color: #bb86fc;
+      color: #fff;
+    }
+
+    body.light-mode .project-card {
+      background-color: #f9f9f9;
+      color: #121212;
+    }
+
+    body.light-mode .view-code-btn {
+      background-color: #ddd;
+      color: #121212;
+    }
+
+    body.light-mode .divider {
+      background-color: #ccc;
     }
 
     aside {
@@ -109,8 +147,7 @@
     main {
       margin-left: 220px;
       padding: 3rem 2rem;
-      max-width: none;
-      width: calc(100% - 220px);
+      width: 100%;
     }
 
     section {
@@ -147,7 +184,7 @@
     p {
       font-size: 1.1em;
       line-height: 1.6;
-      color: #d0c6e0;
+      color: inherit;
     }
 
     .divider {
@@ -181,8 +218,8 @@
 
     .project-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
     }
 
     .project-card {
@@ -215,10 +252,21 @@
       color: #121212;
     }
 
-    @media (min-width: 1200px) {
-      .project-grid {
-        grid-template-columns: repeat(5, 1fr);
-      }
+    .theme-toggle {
+      margin: 1rem auto;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      border: none;
+      background-color: #2a2a2a;
+      color: #d0c6e0;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .theme-toggle:hover {
+      background-color: #bb86fc;
+      color: #121212;
     }
   </style>
 </head>
@@ -232,6 +280,7 @@
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
       </nav>
+      <button id="themeToggle" class="theme-toggle">🌙 Toggle Theme</button>
     </div>
 
     <div class="linkedin-container">
@@ -257,60 +306,31 @@
 
     <section id="about" class="fade-in-section">
       <h2 class="section-header"><i data-lucide="user"></i>About Me</h2>
-      <p>WIP<br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+      <p>WIP</p>
     </section>
 
     <section id="experience" class="fade-in-section">
       <h2 class="section-header"><i data-lucide="briefcase"></i>Experience</h2>
-      <p>WIP<br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+      <p>WIP</p>
     </section>
 
     <section id="projects" class="fade-in-section">
-  <h2 class="section-header"><i data-lucide="code"></i>Projects</h2>
-
-  <div class="project-grid">
-    <div class="project-card">
-      <h3>Personal Portfolio</h3>
-      <p>I will make a short description of this website. WIP</p>
-      <a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a>
-    </div>
-
-    <div class="project-card">
-      <h3>Personal Portfolio</h3>
-      <p>I will make a short description of this website. WIP</p>
-      <a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a>
-    </div>
-
-    <div class="project-card">
-      <h3>Personal Portfolio</h3>
-      <p>I will make a short description of this website. WIP</p>
-      <a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a>
-    </div>
-
-    <div class="project-card">
-      <h3>Personal Portfolio</h3>
-      <p>I will make a short description of this website. WIP</p>
-      <a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a>
-    </div>
-
-    <div class="project-card">
-      <h3>Personal Portfolio</h3>
-      <p>I will make a short description of this website. WIP</p>
-      <a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a>
-    </div>
-
-    <div class="project-card">
-      <h3>Personal Portfolio</h3>
-      <p>I will make a short description of this website. WIP</p>
-      <a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a>
-    </div>
-  </div>
-</section>
+      <h2 class="section-header"><i data-lucide="code"></i>Projects</h2>
+      <div class="project-grid">
+        <div class="project-card">
+          <h3>Personal Portfolio</h3>
+          <p>A description of this website.</p>
+          <a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a>
+        </div>
+        <!-- You can duplicate this block for more projects -->
+      </div>
+    </section>
   </main>
 
   <div class="cursor-glow" id="cursorGlow"></div>
 
   <script>
+    // Fade-in on scroll
     const faders = document.querySelectorAll('.fade-in-section');
     const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
     const appearOnScroll = new IntersectionObserver((entries, observer) => {
@@ -322,6 +342,7 @@
     }, appearOptions);
     faders.forEach(fader => appearOnScroll.observe(fader));
 
+    // Cursor trail
     const cursor = document.getElementById('cursorGlow');
     document.addEventListener('mousemove', e => {
       cursor.style.left = `${e.clientX}px`;
@@ -338,6 +359,22 @@
         trail.style.transition = 'opacity 0.5s ease-out';
         setTimeout(() => trail.remove(), 500);
       }, 10);
+    });
+
+    // Theme toggle
+    const toggleButton = document.getElementById('themeToggle');
+    const body = document.body;
+
+    toggleButton.addEventListener('click', () => {
+      body.classList.toggle('light-mode');
+      localStorage.setItem('theme', body.classList.contains('light-mode') ? 'light' : 'dark');
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'light') {
+        body.classList.add('light-mode');
+      }
     });
 
     lucide.createIcons();
