@@ -7,6 +7,28 @@
   <link href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
+    :root {
+      --bg: #121212;
+      --text: #e0d7f4;
+      --accent: #bb86fc;
+      --card: #1e1e1e;
+      --hover: #bb86fc;
+      --button-bg: #2a2a2a;
+      --button-text: #d0c6e0;
+      --border: #333;
+    }
+
+    body.light-mode {
+      --bg: #f4f4f4;
+      --text: #2a2a2a;
+      --accent: #6200ea;
+      --card: #ffffff;
+      --hover: #d1c4e9;
+      --button-bg: #e0e0e0;
+      --button-text: #2a2a2a;
+      --border: #ccc;
+    }
+
     * {
       box-sizing: border-box;
     }
@@ -14,64 +36,27 @@
     body {
       margin: 0;
       display: flex;
-      background-color: #121212;
-      color: #e0d7f4;
+      background-color: var(--bg);
+      color: var(--text);
       font-family: 'Roboto', sans-serif;
       overflow-x: hidden;
       transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    /* Light mode */
-    body.light-mode {
-      background-color: #ffffff;
-      color: #121212;
-    }
-
-    body.light-mode aside {
-      background-color: #f0f0f0;
-      border-right: 1px solid #ccc;
-    }
-
-    body.light-mode nav a,
-    body.light-mode .social-button {
-      background-color: #e0e0e0;
-      color: #121212;
-    }
-
-    body.light-mode nav a:hover,
-    body.light-mode .social-button:hover {
-      background-color: #bb86fc;
-      color: #fff;
-    }
-
-    body.light-mode .project-card {
-      background-color: #f9f9f9;
-      color: #121212;
-    }
-
-    body.light-mode .view-code-btn {
-      background-color: #ddd;
-      color: #121212;
-    }
-
-    body.light-mode .divider {
-      background-color: #ccc;
-    }
-
     aside {
       width: 220px;
-      background-color: #1e1e1e;
+      background-color: var(--card);
       height: 100vh;
       padding: 2rem 1rem;
       position: fixed;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      border-right: 1px solid #333;
+      border-right: 1px solid var(--border);
     }
 
     aside h2 {
-      color: #bb86fc;
+      color: var(--accent);
       font-family: 'Fuzzy Bubbles', cursive;
       font-size: 1.8em;
       margin-bottom: 2rem;
@@ -90,8 +75,8 @@
       margin: 0.5rem 0;
       padding: 0.75rem 1rem;
       text-decoration: none;
-      background-color: #2a2a2a;
-      color: #d0c6e0;
+      background-color: var(--button-bg);
+      color: var(--button-text);
       font-weight: bold;
       text-align: center;
       border-radius: 8px;
@@ -100,8 +85,8 @@
     }
 
     nav a:hover {
-      background-color: #bb86fc;
-      color: #121212;
+      background-color: var(--hover);
+      color: var(--bg);
       transform: scale(1.05);
     }
 
@@ -113,15 +98,15 @@
     .linkedin-text {
       margin-bottom: 0.5rem;
       font-size: 0.95em;
-      color: #bbb;
+      color: var(--button-text);
     }
 
     .social-button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      background-color: #2a2a2a;
-      color: #d0c6e0;
+      background-color: var(--button-bg);
+      color: var(--button-text);
       padding: 0.75rem 1rem;
       border-radius: 8px;
       text-decoration: none;
@@ -133,8 +118,8 @@
     }
 
     .social-button:hover {
-      background-color: #bb86fc;
-      color: #121212;
+      background-color: var(--hover);
+      color: var(--bg);
       transform: scale(1.05);
     }
 
@@ -156,7 +141,7 @@
 
     h1, h2 {
       font-family: 'Fuzzy Bubbles', cursive;
-      color: #bb86fc;
+      color: var(--accent);
     }
 
     h1 {
@@ -176,7 +161,7 @@
     }
 
     .section-header i {
-      color: #bb86fc;
+      color: var(--accent);
       width: 28px;
       height: 28px;
     }
@@ -184,12 +169,12 @@
     p {
       font-size: 1.1em;
       line-height: 1.6;
-      color: inherit;
+      color: var(--text);
     }
 
     .divider {
       height: 1px;
-      background-color: #333;
+      background-color: var(--border);
       margin: 3rem 0;
     }
 
@@ -218,15 +203,15 @@
 
     .project-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
     }
 
     .project-card {
-      background-color: #1e1e1e;
+      background-color: var(--card);
       padding: 1rem;
       border-radius: 10px;
-      box-shadow: 0 0 8px rgba(187, 134, 252, 0.2);
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
       transition: all 0.3s ease;
     }
 
@@ -239,8 +224,8 @@
       display: inline-block;
       margin-top: 1rem;
       padding: 0.5rem 1rem;
-      background-color: #2a2a2a;
-      color: #bb86fc;
+      background-color: var(--button-bg);
+      color: var(--accent);
       text-decoration: none;
       font-weight: bold;
       border-radius: 6px;
@@ -248,25 +233,18 @@
     }
 
     .view-code-btn:hover {
-      background-color: #bb86fc;
-      color: #121212;
+      background-color: var(--accent);
+      color: var(--bg);
     }
 
     .theme-toggle {
-      margin: 1rem auto;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
+      background: none;
       border: none;
-      background-color: #2a2a2a;
-      color: #d0c6e0;
+      font-size: 1.8rem;
       cursor: pointer;
-      font-weight: bold;
-      transition: all 0.3s ease;
-    }
-
-    .theme-toggle:hover {
-      background-color: #bb86fc;
-      color: #121212;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      align-self: center;
     }
   </style>
 </head>
@@ -275,12 +253,12 @@
   <aside>
     <div>
       <h2>Portfolio</h2>
+      <button class="theme-toggle" id="themeToggle" title="Toggle light/dark mode">🌙</button>
       <nav>
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
       </nav>
-      <button id="themeToggle" class="theme-toggle">🌙 Toggle Theme</button>
     </div>
 
     <div class="linkedin-container">
@@ -319,18 +297,24 @@
       <div class="project-grid">
         <div class="project-card">
           <h3>Personal Portfolio</h3>
-          <p>A description of this website.</p>
+          <p>Short description of this website. WIP</p>
           <a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a>
         </div>
-        <!-- You can duplicate this block for more projects -->
+        <div class="project-card">
+          <h3>Another Project</h3>
+          <p>Description for another project. WIP</p>
+          <a class="view-code-btn" href="#" target="_blank">View Code</a>
+        </div>
+        <div class="project-card">
+          <h3>Third Project</h3>
+          <p>Description for third project. WIP</p>
+          <a class="view-code-btn" href="#" target="_blank">View Code</a>
+        </div>
       </div>
     </section>
   </main>
 
-  <div class="cursor-glow" id="cursorGlow"></div>
-
   <script>
-    // Fade-in on scroll
     const faders = document.querySelectorAll('.fade-in-section');
     const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
     const appearOnScroll = new IntersectionObserver((entries, observer) => {
@@ -342,43 +326,14 @@
     }, appearOptions);
     faders.forEach(fader => appearOnScroll.observe(fader));
 
-    // Cursor trail
-    const cursor = document.getElementById('cursorGlow');
-    document.addEventListener('mousemove', e => {
-      cursor.style.left = `${e.clientX}px`;
-      cursor.style.top = `${e.clientY}px`;
-
-      const trail = document.createElement('div');
-      trail.classList.add('trail');
-      trail.style.left = `${e.clientX}px`;
-      trail.style.top = `${e.clientY}px`;
-      document.body.appendChild(trail);
-
-      setTimeout(() => {
-        trail.style.opacity = 0;
-        trail.style.transition = 'opacity 0.5s ease-out';
-        setTimeout(() => trail.remove(), 500);
-      }, 10);
-    });
-
-    // Theme toggle
-    const toggleButton = document.getElementById('themeToggle');
-    const body = document.body;
-
-    toggleButton.addEventListener('click', () => {
-      body.classList.toggle('light-mode');
-      localStorage.setItem('theme', body.classList.contains('light-mode') ? 'light' : 'dark');
-    });
-
-    window.addEventListener('DOMContentLoaded', () => {
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme === 'light') {
-        body.classList.add('light-mode');
-      }
+    // Light/Dark Theme Toggle
+    const toggleBtn = document.getElementById('themeToggle');
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+      toggleBtn.textContent = document.body.classList.contains('light-mode') ? '☀️' : '🌙';
     });
 
     lucide.createIcons();
   </script>
-
 </body>
 </html>
