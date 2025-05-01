@@ -4,7 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Afeef Islam</title>
-  <link href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@700&family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
   <style>
     * {
       box-sizing: border-box;
@@ -130,6 +131,18 @@
       margin-bottom: 1rem;
     }
 
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .section-header i {
+      color: #bb86fc;
+      width: 28px;
+      height: 28px;
+    }
+
     p {
       font-size: 1.1em;
       line-height: 1.6;
@@ -165,35 +178,29 @@
       transform: translate(-50%, -50%);
     }
 
-    .project-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-
     .project-card {
       background-color: #1e1e1e;
-      border-radius: 12px;
-      padding: 1.5rem;
-      box-shadow: 0 0 10px rgba(187, 134, 252, 0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      padding: 1rem;
+      border-radius: 10px;
+      margin-top: 1rem;
+      box-shadow: 0 0 8px rgba(187, 134, 252, 0.2);
     }
 
-    .project-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 15px rgba(187, 134, 252, 0.4);
-    }
-
-    .project-card h3 {
-      margin-top: 0;
+    .view-code-btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      background-color: #2a2a2a;
       color: #bb86fc;
-      font-family: 'Fuzzy Bubbles', cursive;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 6px;
+      transition: all 0.3s ease;
     }
 
-    .project-card p {
-      margin: 0.5rem 0 0;
-      font-size: 1em;
-      color: #d0c6e0;
+    .view-code-btn:hover {
+      background-color: #bb86fc;
+      color: #121212;
     }
   </style>
 </head>
@@ -240,25 +247,30 @@
     <div class="divider"></div>
 
     <section id="about" class="fade-in-section">
-      <h2>About Me</h2>
-      <p>WIP<br><br><br><br><br><br><br><br><br><br><br></p>
+      <h2 class="section-header"><i data-lucide="user"></i>About Me</h2>
+      <p>WIP</p>
     </section>
 
     <section id="experience" class="fade-in-section">
-      <h2>Experience</h2>
-      <p>WIP<br><br><br><br><br><br><br><br><br><br><br></p>
+      <h2 class="section-header"><i data-lucide="briefcase"></i>Experience</h2>
+      <p>WIP</p>
     </section>
 
     <section id="projects" class="fade-in-section">
-      <h2>Projects</h2>
-      <div class="project-grid">
-        <div class="project-card">
-          <h3>Personal Portfolio</h3>
-          <p>A responsive, dark-themed portfolio website built with HTML and CSS, featuring a sidebar, animations, and custom cursor effects.</p>
-        </div>
+      <h2 class="section-header"><i data-lucide="code"></i>Projects</h2>
+
+      <div class="project-card">
+        <h3>Project Title</h3>
+        <p>A short description of your project goes here. It can explain what the project does and what technologies were used.</p>
+        <a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a>
       </div>
+
+      <!-- WIP will add more projects -->
+
     </section>
   </main>
+
+  <div class="cursor-glow" id="cursorGlow"></div>
 
   <script>
     const faders = document.querySelectorAll('.fade-in-section');
@@ -272,18 +284,25 @@
     }, appearOptions);
     faders.forEach(fader => appearOnScroll.observe(fader));
 
+    const cursor = document.getElementById('cursorGlow');
     document.addEventListener('mousemove', e => {
+      cursor.style.left = `${e.clientX}px`;
+      cursor.style.top = `${e.clientY}px`;
+
       const trail = document.createElement('div');
       trail.classList.add('trail');
       trail.style.left = `${e.clientX}px`;
       trail.style.top = `${e.clientY}px`;
       document.body.appendChild(trail);
+
       setTimeout(() => {
         trail.style.opacity = 0;
         trail.style.transition = 'opacity 0.5s ease-out';
         setTimeout(() => trail.remove(), 500);
       }, 10);
     });
+
+    lucide.createIcons();
   </script>
 
 </body>
