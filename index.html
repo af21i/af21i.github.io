@@ -151,6 +151,21 @@
       opacity: 1;
       transform: none;
     }
+
+    .cursor-glow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(187, 134, 252, 0.3); /* Soft purple glow */
+      box-shadow: 0 0 20px 8px rgba(187, 134, 252, 0.5);
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.05s ease-out;
+    }
   </style>
 </head>
 <body>
@@ -239,5 +254,14 @@
     });
   </script>
 
+  <div class="cursor-glow" id="cursorGlow"></div>
+  
+  <script>
+    const cursor = document.getElementById('cursorGlow');
+    document.addEventListener('mousemove', e => {
+      cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+    });
+  </script>
+  
 </body>
 </html>
