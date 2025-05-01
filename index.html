@@ -164,6 +164,37 @@
       z-index: 9998;
       transform: translate(-50%, -50%);
     }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background-color: #1e1e1e;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 0 10px rgba(187, 134, 252, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 15px rgba(187, 134, 252, 0.4);
+    }
+
+    .project-card h3 {
+      margin-top: 0;
+      color: #bb86fc;
+      font-family: 'Fuzzy Bubbles', cursive;
+    }
+
+    .project-card p {
+      margin: 0.5rem 0 0;
+      font-size: 1em;
+      color: #d0c6e0;
+    }
   </style>
 </head>
 <body>
@@ -210,21 +241,24 @@
 
     <section id="about" class="fade-in-section">
       <h2>About Me</h2>
-      <p>WIP<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+      <p>WIP<br><br><br><br><br><br><br><br><br><br><br></p>
     </section>
 
     <section id="experience" class="fade-in-section">
       <h2>Experience</h2>
-      <p>WIP<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+      <p>WIP<br><br><br><br><br><br><br><br><br><br><br></p>
     </section>
 
     <section id="projects" class="fade-in-section">
       <h2>Projects</h2>
-      <p>WIP<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+      <div class="project-grid">
+        <div class="project-card">
+          <h3>Personal Portfolio</h3>
+          <p>A responsive, dark-themed portfolio website built with HTML and CSS, featuring a sidebar, animations, and custom cursor effects.</p>
+        </div>
+      </div>
     </section>
   </main>
-
-  <div class="cursor-glow" id="cursorGlow"></div>
 
   <script>
     const faders = document.querySelectorAll('.fade-in-section');
@@ -238,17 +272,12 @@
     }, appearOptions);
     faders.forEach(fader => appearOnScroll.observe(fader));
 
-    const cursor = document.getElementById('cursorGlow');
     document.addEventListener('mousemove', e => {
-      cursor.style.left = `${e.clientX}px`;
-      cursor.style.top = `${e.clientY}px`;
-
       const trail = document.createElement('div');
       trail.classList.add('trail');
       trail.style.left = `${e.clientX}px`;
       trail.style.top = `${e.clientY}px`;
       document.body.appendChild(trail);
-
       setTimeout(() => {
         trail.style.opacity = 0;
         trail.style.transition = 'opacity 0.5s ease-out';
