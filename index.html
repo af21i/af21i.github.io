@@ -189,18 +189,6 @@
       transform: none;
     }
 
-    .trail {
-      position: fixed;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: rgba(187, 134, 252, 0.3);
-      box-shadow: 0 0 10px 4px rgba(187, 134, 252, 0.4);
-      pointer-events: none;
-      z-index: 9998;
-      transform: translate(-50%, -50%);
-    }
-
     .project-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -238,13 +226,41 @@
     }
 
     .theme-toggle {
-      background: none;
-      border: none;
-      font-size: 1.8rem;
-      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: var(--button-bg);
       color: var(--accent);
-      margin-bottom: 1rem;
-      align-self: center;
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      cursor: pointer;
+      border: none;
+      gap: 0.5rem;
+      width: 100%;
+      transition: background-color 0.3s ease;
+      font-weight: bold;
+    }
+
+    .theme-toggle:hover {
+      background-color: var(--hover);
+      color: var(--bg);
+    }
+
+    .theme-toggle svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .trail {
+      position: fixed;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(187, 134, 252, 0.3);
+      box-shadow: 0 0 10px 4px rgba(187, 134, 252, 0.4);
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
     }
   </style>
 </head>
@@ -253,7 +269,9 @@
   <aside>
     <div>
       <h2>Portfolio</h2>
-      <button class="theme-toggle" id="themeToggle" title="Toggle light/dark mode">🌙</button>
+      <button class="theme-toggle" id="themeToggle" title="Toggle light/dark mode">
+        <i data-lucide="moon"></i><span>Dark Mode</span>
+      </button>
       <nav>
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
@@ -314,6 +332,39 @@
     </section>
   </main>
 
+  <!-- Mouse trail elements -->
+  <script>
+    const trail = [];
+    for (let i = 0; i < 12; i++) {
+      const div = document.createElement("div");
+      div.classList.add("trail");
+      document.body.appendChild(div);
+      trail.push(div);
+    }
+
+    let mouse = { x: 0, y: 0 };
+    window.addEventListener("mousemove", e => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    });
+
+    function animateTrail() {
+      let x = mouse.x, y = mouse.y;
+      trail.forEach((dot, index) => {
+        const next = trail[index + 1] || trail[0];
+        dot.style.left = x + "px";
+        dot.style.top = y + "px";
+        const dx = next.offsetLeft - x;
+        const dy = next.offsetTop - y;
+        x += dx * 0.25;
+        y += dy * 0.25;
+      });
+      requestAnimationFrame(animateTrail);
+    }
+    animateTrail();
+  </script>
+
+  <!-- Section animation + toggle theme -->
   <script>
     const faders = document.querySelectorAll('.fade-in-section');
     const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
@@ -326,11 +377,19 @@
     }, appearOptions);
     faders.forEach(fader => appearOnScroll.observe(fader));
 
-    // Light/Dark Theme Toggle
     const toggleBtn = document.getElementById('themeToggle');
     toggleBtn.addEventListener('click', () => {
       document.body.classList.toggle('light-mode');
-      toggleBtn.textContent = document.body.classList.contains('light-mode') ? '☀️' : '🌙';
+      const icon = toggleBtn.querySelector('i');
+      const label = toggleBtn.querySelector('span');
+      if (document.body.classList.contains('light-mode')) {
+        icon.setAttribute('data-lucide', 'sun');
+        label.textContent = 'Light Mode';
+      } else {
+        icon.setAttribute('data-lucide', 'moon');
+        label.textContent = 'Dark Mode';
+      }
+      lucide.createIcons();
     });
 
     lucide.createIcons();
