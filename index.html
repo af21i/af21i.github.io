@@ -13,49 +13,51 @@
 
     body {
       margin: 0;
+      display: flex;
       background-color: #121212;
       color: #e0d7f4;
       font-family: 'Roboto', sans-serif;
       overflow-x: hidden;
-      display: flex;
-      flex-direction: column;
     }
 
     aside {
+      width: 220px;
       background-color: #1e1e1e;
-      padding: 1.5rem 1rem;
+      height: 100vh;
+      padding: 2rem 1rem;
+      position: fixed;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid #333;
-      position: sticky;
-      top: 0;
-      z-index: 999;
+      border-right: 1px solid #333;
     }
 
     aside h2 {
       color: #bb86fc;
       font-family: 'Fuzzy Bubbles', cursive;
-      font-size: 1.6em;
+      font-size: 1.8em;
+      margin-bottom: 2rem;
       text-align: center;
     }
 
     nav {
       display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: center;
-      margin: 1rem 0;
+      flex-direction: column;
+      align-items: center;
+      flex-grow: 1;
     }
 
     nav a {
+      display: block;
+      margin: 0.5rem 0;
+      padding: 0.75rem 1rem;
       text-decoration: none;
       background-color: #2a2a2a;
       color: #d0c6e0;
       font-weight: bold;
+      text-align: center;
       border-radius: 8px;
-      padding: 0.5rem 1rem;
+      width: 100%;
       transition: all 0.3s ease;
     }
 
@@ -67,6 +69,7 @@
 
     .linkedin-container {
       text-align: center;
+      padding-top: 2rem;
     }
 
     .linkedin-text {
@@ -81,13 +84,14 @@
       justify-content: center;
       background-color: #2a2a2a;
       color: #d0c6e0;
-      padding: 0.6rem 1rem;
+      padding: 0.75rem 1rem;
       border-radius: 8px;
       text-decoration: none;
       font-weight: bold;
       gap: 10px;
+      width: 100%;
+      margin-bottom: 0.5rem;
       transition: all 0.3s ease;
-      margin: 0.3rem 0;
     }
 
     .social-button:hover {
@@ -102,28 +106,29 @@
       filter: invert(100%);
     }
 
-    .profile-picture {
+     .profile-picture {
       display: flex;
       justify-content: center;
-      margin: 20px 0;
+      margin: 10px 0 5px 0;
     }
-
+    
     .profile-picture img {
-      width: 150px;
-      height: 150px;
+      width: 170px;
+      height: 170px;
       border-radius: 50%;
       object-fit: cover;
       border: 3px solid #b68eff;
     }
 
     main {
-      padding: 2rem 1.5rem;
-      max-width: 1200px;
-      margin: 0 auto;
+      margin-left: 220px;
+      padding: 3rem 2rem;
+      max-width: none;
+      width: calc(100% - 220px);
     }
 
     section {
-      margin-bottom: 3rem;
+      margin-bottom: 4rem;
     }
 
     h1, h2 {
@@ -132,12 +137,12 @@
     }
 
     h1 {
-      font-size: 2.5em;
+      font-size: 3em;
       text-align: center;
     }
 
     h2 {
-      font-size: 1.8em;
+      font-size: 2em;
       margin-bottom: 1rem;
     }
 
@@ -149,12 +154,12 @@
 
     .section-header i {
       color: #bb86fc;
-      width: 24px;
-      height: 24px;
+      width: 28px;
+      height: 28px;
     }
 
     p {
-      font-size: 1em;
+      font-size: 1.1em;
       line-height: 1.6;
       color: #d0c6e0;
     }
@@ -162,13 +167,13 @@
     .divider {
       height: 1px;
       background-color: #333;
-      margin: 2rem 0;
+      margin: 3rem 0;
     }
 
     .fade-in-section {
       opacity: 0;
       transform: translateY(30px); 
-      transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+      transition: opacity 2s ease-out, transform 2s ease-out; 
     }
 
     .fade-in-section.is-visible {
@@ -190,7 +195,7 @@
 
     .project-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 20px;
     }
 
@@ -226,33 +231,8 @@
     }
 
     @media (min-width: 768px) {
-      aside {
-        position: fixed;
-        left: 0;
-        top: 0;
-        height: 100vh;
-        width: 220px;
-        border-right: 1px solid #333;
-        border-bottom: none;
-        flex-direction: column;
-        justify-content: space-between;
-      }
-
-      nav {
-        flex-direction: column;
-        gap: 0;
-        align-items: center;
-      }
-
-      nav a {
-        width: 100%;
-        text-align: center;
-        margin: 0.5rem 0;
-      }
-
-      main {
-        margin-left: 220px;
-        padding: 3rem 2rem;
+      .project-grid {
+        grid-template-columns: repeat(3, 1fr);
       }
     }
   </style>
@@ -289,37 +269,85 @@
       <div class="profile-picture">
         <img src="IMG_6315.jpg" alt="Profile Picture">
       </div>
-      <p style="text-align: center;">Computer Engineering Student at Toronto Metropolitan University</p>
+      <p style="text-align: center;"><br>Computer Engineering Student at Toronto Metropolitan University</p>
     </section>
 
     <div class="divider"></div>
 
     <section id="about" class="fade-in-section">
       <h2 class="section-header"><i data-lucide="user"></i>About Me</h2>
-      <p>WIP</p>
+      <p>WIP<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
     </section>
 
     <section id="skills" class="fade-in-section">
       <h2 class="section-header"><i data-lucide="hammer"></i>Skills</h2>
-      <p>WIP</p>
+      <p>WIP<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
     </section>
-
+      
     <section id="experience" class="fade-in-section">
       <h2 class="section-header"><i data-lucide="briefcase"></i>Experience</h2>
-      <p>WIP</p>
+      <p>WIP<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
     </section>
 
     <section id="projects" class="fade-in-section">
-      <h2 class="section-header"><i data-lucide="code"></i>Projects</h2>
-      <div class="project-grid">
-        <div class="project-card">
-          <h3>Personal Portfolio</h3>
-          <p>This is the personal portfolio website you are currently viewing. Designed with HTML, CSS, and JavaScript.</p>
-          <a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a>
-        </div>
-        <!-- Add more cards as needed -->
-      </div>
-    </section>
+  <h2 class="section-header"><i data-lucide="code"></i>Projects</h2>
+
+  <div class="project-grid">
+    <div class="project-card">
+      <h3>Personal Portfolio</h3>
+      <p>This is the personal portfolio website you are currently viewing. Designed with HTML, CSS, and JavaScript, it offers a clean, interactive layout to highlight who I am, my experiences, and the projects I've worked on.</p>
+      <a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a>
+    </div>
+
+    <div class="project-card">
+      <h3>Project Name - WIP</h3>
+      <p>Project Description - WIP</p>
+      <a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a>
+    </div>
+
+    <div class="project-card">
+      <h3>Project Name - WIP</h3>
+      <p>Project Description - WIP</p>
+      <a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a>
+    </div>
+
+    <div class="project-card">
+      <h3>Project Name - WIP</h3>
+      <p>Project Description - WIP</p>
+      <a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a>
+    </div>
+
+    <div class="project-card">
+      <h3>Project Name - WIP</h3>
+      <p>Project Description - WIP</p>
+      <a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a>
+    </div>
+
+    <div class="project-card">
+      <h3>Project Name - WIP</h3>
+      <p>Project Description - WIP</p>
+      <a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a>
+    </div>
+ 
+    <div class="project-card">
+      <h3>Project Name - WIP</h3>
+      <p>Project Description - WIP</p>
+      <a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a>
+    </div>
+
+    <div class="project-card">
+      <h3>Project Name - WIP</h3>
+      <p>Project Description - WIP</p>
+      <a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a>
+    </div>
+
+    <div class="project-card">
+      <h3>Project Name - WIP</h3>
+      <p>Project Description - WIP</p>
+      <a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a>
+    </div>
+  </div>
+</section>
   </main>
 
   <div class="cursor-glow" id="cursorGlow"></div>
@@ -359,3 +387,5 @@
 
 </body>
 </html>
+
+
