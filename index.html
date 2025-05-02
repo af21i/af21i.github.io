@@ -20,6 +20,23 @@
       overflow-x: hidden;
     }
 
+    /* Toggle button */
+    #sidebarToggle {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 10000;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    #sidebarToggle i {
+      width: 28px;
+      height: 28px;
+      color: #bb86fc;
+    }
+
     aside {
       width: 220px;
       background-color: #1e1e1e;
@@ -30,6 +47,11 @@
       flex-direction: column;
       justify-content: space-between;
       border-right: 1px solid #333;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    aside.closed {
+      transform: translateX(-100%);
     }
 
     aside h2 {
@@ -106,12 +128,12 @@
       filter: invert(100%);
     }
 
-     .profile-picture {
+    .profile-picture {
       display: flex;
       justify-content: center;
       margin: 10px 0 5px 0;
     }
-    
+
     .profile-picture img {
       width: 170px;
       height: 170px;
@@ -123,8 +145,13 @@
     main {
       margin-left: 220px;
       padding: 3rem 2rem;
-      max-width: none;
       width: calc(100% - 220px);
+      transition: margin-left 0.3s ease-in-out;
+    }
+
+    main.shifted {
+      margin-left: 0;
+      width: 100%;
     }
 
     section {
@@ -239,7 +266,11 @@
 </head>
 <body>
 
-  <aside>
+  <button id="sidebarToggle">
+    <i data-lucide="menu"></i>
+  </button>
+
+  <aside id="sidebar">
     <div>
       <h2>Portfolio</h2>
       <nav>
@@ -249,7 +280,6 @@
         <a href="#projects">Projects</a>
       </nav>
     </div>
-
     <div class="linkedin-container">
       <div class="linkedin-text">Connect with me!</div>
       <a href="https://www.linkedin.com/in/afeef-islam-622aba349/" target="_blank" class="social-button">
@@ -263,7 +293,7 @@
     </div>
   </aside>
 
-  <main>
+  <main id="mainContent">
     <section class="fade-in-section">
       <h1>Afeef Islam</h1>
       <div class="profile-picture">
@@ -290,64 +320,16 @@
     </section>
 
     <section id="projects" class="fade-in-section">
-  <h2 class="section-header"><i data-lucide="code"></i>Projects</h2>
-
-  <div class="project-grid">
-    <div class="project-card">
-      <h3>Personal Portfolio</h3>
-      <p>This is the personal portfolio website you are currently viewing. Designed with HTML, CSS, and JavaScript, it offers a clean, interactive layout to highlight who I am, my experiences, and the projects I've worked on.</p>
-      <a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a>
-    </div>
-
-    <div class="project-card">
-      <h3>Project Name - WIP</h3>
-      <p>Project Description - WIP</p>
-      <a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a>
-    </div>
-
-    <div class="project-card">
-      <h3>Project Name - WIP</h3>
-      <p>Project Description - WIP</p>
-      <a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a>
-    </div>
-
-    <div class="project-card">
-      <h3>Project Name - WIP</h3>
-      <p>Project Description - WIP</p>
-      <a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a>
-    </div>
-
-    <div class="project-card">
-      <h3>Project Name - WIP</h3>
-      <p>Project Description - WIP</p>
-      <a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a>
-    </div>
-
-    <div class="project-card">
-      <h3>Project Name - WIP</h3>
-      <p>Project Description - WIP</p>
-      <a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a>
-    </div>
- 
-    <div class="project-card">
-      <h3>Project Name - WIP</h3>
-      <p>Project Description - WIP</p>
-      <a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a>
-    </div>
-
-    <div class="project-card">
-      <h3>Project Name - WIP</h3>
-      <p>Project Description - WIP</p>
-      <a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a>
-    </div>
-
-    <div class="project-card">
-      <h3>Project Name - WIP</h3>
-      <p>Project Description - WIP</p>
-      <a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a>
-    </div>
-  </div>
-</section>
+      <h2 class="section-header"><i data-lucide="code"></i>Projects</h2>
+      <div class="project-grid">
+        <div class="project-card">
+          <h3>Personal Portfolio</h3>
+          <p>This is the personal portfolio website you are currently viewing...</p>
+          <a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a>
+        </div>
+        <!-- Add your other WIP projects here -->
+      </div>
+    </section>
   </main>
 
   <div class="cursor-glow" id="cursorGlow"></div>
@@ -382,10 +364,13 @@
       }, 10);
     });
 
+    document.getElementById('sidebarToggle').addEventListener('click', () => {
+      document.getElementById('sidebar').classList.toggle('closed');
+      document.getElementById('mainContent').classList.toggle('shifted');
+    });
+
     lucide.createIcons();
   </script>
 
 </body>
 </html>
-
-
