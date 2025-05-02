@@ -2,37 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Afeef Islam</title>
-  <link href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap">
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
     body {
       margin: 0;
-      display: flex;
-      background-color: #121212;
-      color: #e0d7f4;
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Comic Neue', sans-serif;
+      background-color: #111;
+      color: white;
       overflow-x: hidden;
     }
 
     aside {
-      width: 220px;
-      background-color: #1e1e1e;
-      height: 100vh;
-      padding: 2rem 1rem;
       position: fixed;
-      left: 0;
       top: 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      border-right: 1px solid #333;
-      transition: transform 0.4s ease;
+      left: 0;
+      height: 100vh;
+      width: 220px;
+      background-color: #1a1a1a;
+      padding: 1rem;
+      box-sizing: border-box;
+      transition: transform 0.3s ease;
       z-index: 100;
     }
 
@@ -40,350 +31,202 @@
       transform: translateX(-100%);
     }
 
+    aside h1 {
+      margin: 0 0 2rem 0;
+      font-size: 2rem;
+      color: #b388ff;
+    }
+
+    .nav-button {
+      display: block;
+      margin: 1rem 0;
+      padding: 0.8rem 1rem;
+      background-color: #2a2a2a;
+      border: none;
+      border-radius: 0.5rem;
+      color: white;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.2s;
+    }
+
+    .nav-button:hover {
+      background-color: #444;
+    }
+
     .toggle-button {
       position: fixed;
       top: 1rem;
-      left: 220px;
+      left: 0;
+      width: 30px;
+      height: 60px;
       background-color: #444;
       border: none;
       color: white;
-      font-size: 1.5rem;
-      padding: 8px 10px;
-      border-radius: 6px;
+      font-size: 20px;
+      border-radius: 0 6px 6px 0;
       cursor: pointer;
       z-index: 101;
-      transition: left 0.4s ease;
-    }
-
-    aside.collapsed + .toggle-button {
-      left: 10px;
-    }
-
-    aside h2 {
-      color: #bb86fc;
-      font-family: 'Fuzzy Bubbles', cursive;
-      font-size: 1.8em;
-      margin-bottom: 2rem;
-      text-align: center;
-    }
-
-    nav {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      flex-grow: 1;
-    }
-
-    nav a {
-      display: block;
-      margin: 0.5rem 0;
-      padding: 0.75rem 1rem;
-      text-decoration: none;
-      background-color: #2a2a2a;
-      color: #d0c6e0;
-      font-weight: bold;
-      text-align: center;
-      border-radius: 8px;
-      width: 100%;
-      transition: all 0.3s ease;
-    }
-
-    nav a:hover {
-      background-color: #bb86fc;
-      color: #121212;
-      transform: scale(1.05);
-    }
-
-    .linkedin-container {
-      text-align: center;
-      padding-top: 2rem;
-    }
-
-    .linkedin-text {
-      margin-bottom: 0.5rem;
-      font-size: 0.95em;
-      color: #bbb;
-    }
-
-    .social-button {
-      display: inline-flex;
       align-items: center;
       justify-content: center;
-      background-color: #2a2a2a;
-      color: #d0c6e0;
-      padding: 0.75rem 1rem;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      gap: 10px;
-      width: 100%;
-      margin-bottom: 0.5rem;
-      transition: all 0.3s ease;
+      transition: left 0.3s ease;
     }
 
-    .social-button:hover {
-      background-color: #bb86fc;
-      color: #121212;
-      transform: scale(1.05);
-    }
-
-    .social-button img {
-      width: 20px;
-      height: 20px;
-      filter: invert(100%);
-    }
-
-    .profile-picture {
-      display: flex;
-      justify-content: center;
-      margin: 10px 0 5px 0;
-    }
-
-    .profile-picture img {
-      width: 170px;
-      height: 170px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid #b68eff;
+    aside:not(.collapsed) + .toggle-button {
+      left: 220px;
     }
 
     main {
       margin-left: 220px;
-      padding: 3rem 2rem;
-      width: calc(100% - 220px);
-      transition: margin-left 0.4s ease, width 0.4s ease;
+      padding: 2rem;
+      transition: margin-left 0.3s ease;
     }
 
     aside.collapsed ~ main {
       margin-left: 0;
-      width: 100%;
     }
 
-    section {
+    .section {
       margin-bottom: 4rem;
     }
 
-    h1, h2 {
-      font-family: 'Fuzzy Bubbles', cursive;
-      color: #bb86fc;
-    }
-
-    h1 {
-      font-size: 3em;
-      text-align: center;
-    }
-
-    h2 {
-      font-size: 2em;
+    .section h2 {
+      font-size: 2rem;
       margin-bottom: 1rem;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .section-header i {
-      color: #bb86fc;
-      width: 28px;
-      height: 28px;
-    }
-
-    p {
-      font-size: 1.1em;
-      line-height: 1.6;
-      color: #d0c6e0;
-    }
-
-    .divider {
-      height: 1px;
-      background-color: #333;
-      margin: 3rem 0;
-    }
-
-    .fade-in-section {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 2s ease-out, transform 2s ease-out;
-    }
-
-    .fade-in-section.is-visible {
-      opacity: 1;
-      transform: none;
-    }
-
-    .trail {
-      position: fixed;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: rgba(187, 134, 252, 0.3);
-      box-shadow: 0 0 10px 4px rgba(187, 134, 252, 0.4);
-      pointer-events: none;
-      z-index: 9998;
-      transform: translate(-50%, -50%);
+      color: #b388ff;
     }
 
     .project-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
     }
 
     .project-card {
-      background-color: #1e1e1e;
+      background-color: #222;
       padding: 1rem;
-      border-radius: 10px;
-      box-shadow: 0 0 8px rgba(187, 134, 252, 0.2);
-      transition: all 0.3s ease;
-      height: auto;
+      border-radius: 0.5rem;
+      transition: transform 0.2s;
     }
 
     .project-card:hover {
-      box-shadow: 0 0 15px 6px rgba(187, 134, 252, 0.4);
-      transform: scale(1.02);
+      transform: scale(1.05);
     }
 
-    .view-code-btn {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.5rem 1rem;
-      background-color: #2a2a2a;
-      color: #bb86fc;
-      text-decoration: none;
-      font-weight: bold;
-      border-radius: 6px;
-      transition: all 0.3s ease;
+    .project-card h3 {
+      margin: 0 0 0.5rem 0;
+      color: #b388ff;
     }
 
-    .view-code-btn:hover {
-      background-color: #bb86fc;
-      color: #121212;
+    .project-card p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: #ccc;
     }
 
-    @media (min-width: 768px) {
-      .project-grid {
-        grid-template-columns: repeat(3, 1fr);
+    @media (max-width: 768px) {
+      aside {
+        transform: translateX(-100%);
+      }
+
+      aside:not(.collapsed) {
+        transform: translateX(0);
+      }
+
+      .toggle-button {
+        left: 0;
+      }
+
+      aside:not(.collapsed) + .toggle-button {
+        left: 220px;
+      }
+
+      main {
+        margin-left: 0;
+      }
+
+      aside:not(.collapsed) ~ main {
+        margin-left: 220px;
       }
     }
   </style>
 </head>
 <body>
-
   <aside id="sidebar">
-    <div>
-      <h2>Portfolio</h2>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-      </nav>
-    </div>
-
-    <div class="linkedin-container">
-      <div class="linkedin-text">Connect with me!</div>
-      <a href="https://www.linkedin.com/in/afeef-islam-622aba349/" target="_blank" class="social-button">
-        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn Logo" />
-        <span>LinkedIn</span>
-      </a>
-      <a href="https://github.com/af21i" target="_blank" class="social-button">
-        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub Logo" />
-        <span>GitHub</span>
-      </a>
-    </div>
+    <h1>Portfolio</h1>
+    <button class="nav-button">About</button>
+    <button class="nav-button">Skills</button>
+    <button class="nav-button">Experience</button>
+    <button class="nav-button">Projects</button>
   </aside>
-
-  <button class="toggle-button" onclick="toggleSidebar()">≡</button>
-
+  <button class="toggle-button" id="toggleBtn">&#9776;</button>
   <main>
-    <section class="fade-in-section">
-      <h1>Afeef Islam</h1>
-      <div class="profile-picture">
-        <img src="IMG_6315.jpg" alt="Profile Picture">
-      </div>
-      <p style="text-align: center;"><br>Computer Engineering Student at Toronto Metropolitan University</p>
+    <section class="section" id="about">
+      <h2>About</h2>
+      <p>This is the about section content.</p>
     </section>
 
-    <div class="divider"></div>
-
-    <section id="about" class="fade-in-section">
-      <h2 class="section-header"><i data-lucide="user"></i>About Me</h2>
-      <p>WIP<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+    <section class="section" id="skills">
+      <h2>Skills</h2>
+      <p>This is the skills section content.</p>
     </section>
 
-    <section id="skills" class="fade-in-section">
-      <h2 class="section-header"><i data-lucide="hammer"></i>Skills</h2>
-      <p>WIP<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
+    <section class="section" id="experience">
+      <h2>Experience</h2>
+      <p>This is the experience section content.</p>
     </section>
 
-    <section id="experience" class="fade-in-section">
-      <h2 class="section-header"><i data-lucide="briefcase"></i>Experience</h2>
-      <p>WIP<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></p>
-    </section>
-
-    <section id="projects" class="fade-in-section">
-      <h2 class="section-header"><i data-lucide="code"></i>Projects</h2>
-
+    <section class="section" id="projects">
+      <h2>Projects</h2>
       <div class="project-grid">
         <div class="project-card">
-          <h3>Personal Portfolio</h3>
-          <p>This is the personal portfolio website you are currently viewing. Designed with HTML, CSS, and JavaScript, it offers a clean, interactive layout to highlight who I am, my experiences, and the projects I've worked on.</p>
-          <a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a>
+          <h3>Project 1</h3>
+          <p>Description of project 1.</p>
         </div>
-
-        <!-- Placeholder WIP projects -->
-        <div class="project-card"><h3>Project Name - WIP</h3><p>Project Description - WIP</p><a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a></div>
-        <div class="project-card"><h3>Project Name - WIP</h3><p>Project Description - WIP</p><a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a></div>
-        <div class="project-card"><h3>Project Name - WIP</h3><p>Project Description - WIP</p><a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a></div>
-        <div class="project-card"><h3>Project Name - WIP</h3><p>Project Description - WIP</p><a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a></div>
-        <div class="project-card"><h3>Project Name - WIP</h3><p>Project Description - WIP</p><a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a></div>
-        <div class="project-card"><h3>Project Name - WIP</h3><p>Project Description - WIP</p><a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a></div>
-        <div class="project-card"><h3>Project Name - WIP</h3><p>Project Description - WIP</p><a class="view-code-btn" href="https://github.com/af21i/af21i.github.io" target="_blank">View Code</a></div>
+        <div class="project-card">
+          <h3>Project 2</h3>
+          <p>Description of project 2.</p>
+        </div>
+        <div class="project-card">
+          <h3>Project 3</h3>
+          <p>Description of project 3.</p>
+        </div>
+        <div class="project-card">
+          <h3>Project 4</h3>
+          <p>Description of project 4.</p>
+        </div>
+        <div class="project-card">
+          <h3>Project 5</h3>
+          <p>Description of project 5.</p>
+        </div>
+        <div class="project-card">
+          <h3>Project 6</h3>
+          <p>Description of project 6.</p>
+        </div>
+        <div class="project-card">
+          <h3>Project 7</h3>
+          <p>Description of project 7.</p>
+        </div>
+        <div class="project-card">
+          <h3>Project 8</h3>
+          <p>Description of project 8.</p>
+        </div>
+        <div class="project-card">
+          <h3>Project 9</h3>
+          <p>Description of project 9.</p>
+        </div>
       </div>
     </section>
   </main>
 
-  <div class="cursor-glow" id="cursorGlow"></div>
-
   <script>
-    const faders = document.querySelectorAll('.fade-in-section');
-    const appearOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
-    const appearOnScroll = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
-      });
-    }, appearOptions);
-    faders.forEach(fader => appearOnScroll.observe(fader));
+    const toggleBtn = document.getElementById('toggleBtn');
+    const sidebar = document.getElementById('sidebar');
 
-    const cursor = document.getElementById('cursorGlow');
-    document.addEventListener('mousemove', e => {
-      cursor.style.left = `${e.clientX}px`;
-      cursor.style.top = `${e.clientY}px`;
-
-      const trail = document.createElement('div');
-      trail.classList.add('trail');
-      trail.style.left = `${e.clientX}px`;
-      trail.style.top = `${e.clientY}px`;
-      document.body.appendChild(trail);
-
-      setTimeout(() => {
-        trail.style.opacity = 0;
-        trail.style.transition = 'opacity 0.5s ease-out';
-        setTimeout(() => trail.remove(), 500);
-      }, 10);
-    });
-
-    function toggleSidebar() {
-      const sidebar = document.getElementById('sidebar');
+    toggleBtn.addEventListener('click', () => {
       sidebar.classList.toggle('collapsed');
-    }
-
-    lucide.createIcons();
+    });
   </script>
-
 </body>
 </html>
