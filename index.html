@@ -106,6 +106,20 @@
       filter: invert(100%);
     }
 
+    .profile-picture {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+    }
+    
+    .profile-picture img {
+      width: 150px; /* adjust size as needed */
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #b68eff; /* matches your purple theme */
+    }
+
     main {
       margin-left: 220px;
       padding: 3rem 2rem;
@@ -252,6 +266,9 @@
   <main>
     <section class="fade-in-section">
       <h1>Afeef Islam</h1>
+      <div class="profile-picture">
+        <img src="IMG_6315.jpg" alt="Profile Picture">
+      </div>
       <p style="text-align: center;">Computer Engineering Student at Toronto Metropolitan University</p>
     </section>
 
