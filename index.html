@@ -308,22 +308,38 @@
       align-items: center;
       justify-content: center;
       gap: 0.55rem;
+    
       min-height: 48px;
-      padding: 0.8rem 1rem;
+      padding: 0.8rem 1.2rem;
+    
       border-radius: 999px;
       border: 1px solid var(--border);
+    
       background: rgba(255, 255, 255, 0.05);
       color: var(--text);
+    
       text-decoration: none;
       font-weight: 800;
-      transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
+      line-height: 1;
+    
+      transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease,
+        background 0.22s ease;
     }
 
     .btn:hover {
       transform: translateY(-3px);
       box-shadow: var(--glow);
     }
-
+    
+    .btn i {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
     .btn.primary {
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
       color: white;
@@ -775,7 +791,7 @@
             </div>
             <div class="stat-card">
               <strong>TMU</strong>
-              <span>Computer Engineering student specializing in software</span>
+              <span>Computer Engineering student specializing in software, seeking internship opportunities for fall 2026</span>
             </div>
           </div>
         </div>
@@ -784,9 +800,6 @@
           <div class="profile-picture">
             <img src="IMG_6315.jpg" alt="Afeef Islam profile picture" />
           </div>
-          <p class="profile-caption">
-            I like projects that combine logic, creativity, and real-world usefulness, especially when there is a dashboard, circuit, system, or experience to show at the end.
-          </p>
         </div>
       </section>
 
