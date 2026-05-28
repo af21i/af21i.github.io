@@ -336,9 +336,7 @@
     .btn i {
   width: 18px;
   height: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-shrink: 0;
 }
     .btn.primary {
       background: linear-gradient(135deg, var(--accent), var(--accent-2));
@@ -779,9 +777,20 @@
           </p>
 
           <div class="hero-actions">
-            <a class="btn primary" href="#projects"><i data-lucide="rocket"></i>View Projects</a>
-            <a class="btn" href="https://github.com/af21i" target="_blank" rel="noopener noreferrer"><i data-lucide="github"></i>GitHub</a>
-            <a class="btn" href="https://www.linkedin.com/in/afeef-islam-622aba349/" target="_blank" rel="noopener noreferrer"><i data-lucide="linkedin"></i>LinkedIn</a>
+            <a class="btn primary" href="#projects">
+              <i data-lucide="rocket"></i>
+              View Projects
+            </a>
+          
+            <a class="btn" href="https://github.com/af21i" target="_blank">
+              <i data-lucide="github"></i>
+              GitHub
+            </a>
+          
+            <a class="btn" href="https://www.linkedin.com/in/afeef-islam-622aba349/" target="_blank">
+              <i data-lucide="linkedin"></i>
+              LinkedIn
+            </a>
           </div>
 
           <div class="quick-stats" aria-label="Portfolio highlights">
