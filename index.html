@@ -64,21 +64,6 @@
       z-index: -2;
     }
 
-    body.light-theme {
-      --bg: #fbf8ff;
-      --bg-soft: #f3edff;
-      --card: rgba(255, 255, 255, 0.76);
-      --card-strong: rgba(255, 255, 255, 0.94);
-      --text: #20172f;
-      --muted: #594c6f;
-      --muted-2: #746783;
-      --border: rgba(124, 77, 255, 0.22);
-      background:
-        radial-gradient(circle at 20% 10%, rgba(187, 134, 252, 0.25), transparent 30%),
-        radial-gradient(circle at 90% 20%, rgba(255, 139, 209, 0.22), transparent 26%),
-        linear-gradient(135deg, #fff 0%, #f7f0ff 55%, #fff 100%);
-    }
-
     a {
       color: inherit;
     }
@@ -199,8 +184,7 @@
     }
 
     nav a,
-    .social-button,
-    .theme-toggle {
+    .social-button {
       min-height: 46px;
       display: flex;
       align-items: center;
@@ -217,8 +201,7 @@
 
     nav a:hover,
     nav a.active,
-    .social-button:hover,
-    .theme-toggle:hover {
+    .social-button:hover {
       transform: translateX(4px);
       border-color: var(--border);
       background: rgba(187, 134, 252, 0.14);
@@ -234,13 +217,6 @@
       color: var(--muted-2);
       font-size: 0.88rem;
       padding-left: 0.25rem;
-    }
-
-    .theme-toggle {
-      cursor: pointer;
-      width: 100%;
-      font-family: inherit;
-      justify-content: flex-start;
     }
 
     .page-shell {
@@ -356,7 +332,7 @@
 
     .quick-stats {
       display: grid;
-      grid-template-columns: repeat(3, minmax(120px, 1fr));
+      grid-template-columns: repeat(2, minmax(180px, 1fr));
       gap: 0.8rem;
       max-width: 720px;
     }
@@ -479,44 +455,6 @@
       margin-bottom: 0;
     }
 
-    .project-toolbar {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      margin: 1.4rem 0 1.25rem;
-    }
-
-    .filter-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-    }
-
-    .filter-btn {
-      border: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.045);
-      color: var(--muted);
-      border-radius: 999px;
-      padding: 0.65rem 0.9rem;
-      font-weight: 800;
-      cursor: pointer;
-      transition: 0.22s ease;
-    }
-
-    .filter-btn:hover,
-    .filter-btn.active {
-      background: rgba(187, 134, 252, 0.18);
-      color: var(--text);
-      transform: translateY(-2px);
-    }
-
-    .project-count {
-      color: var(--muted-2);
-      font-weight: 700;
-    }
-
     .project-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -633,24 +571,6 @@
       transform: translateY(-2px);
     }
 
-    .contact-card {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 1rem;
-      align-items: center;
-      padding: clamp(1.25rem, 3vw, 2rem);
-      border-radius: var(--radius-lg);
-      background: linear-gradient(135deg, rgba(187, 134, 252, 0.17), rgba(255, 139, 209, 0.09));
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-    }
-
-    .contact-card p {
-      color: var(--muted);
-      line-height: 1.7;
-      margin-top: 0.5rem;
-    }
-
     footer {
       color: var(--muted-2);
       padding: 2rem 0 1rem;
@@ -691,10 +611,6 @@
       height: 18px;
       background: rgba(187, 134, 252, 0.28);
       box-shadow: 0 0 12px 4px rgba(187, 134, 252, 0.34);
-    }
-
-    .hidden {
-      display: none !important;
     }
 
     @media (max-width: 1080px) {
@@ -766,8 +682,7 @@
       }
 
       .quick-stats,
-      .project-grid,
-      .contact-card {
+      .project-grid {
         grid-template-columns: 1fr;
       }
 
@@ -775,18 +690,12 @@
         grid-column: span 1;
       }
 
-      .hero-actions,
-      .filter-buttons {
+      .hero-actions {
         width: 100%;
       }
 
-      .btn,
-      .filter-btn {
+      .btn {
         flex: 1 1 auto;
-      }
-
-      .contact-card .btn {
-        width: 100%;
       }
     }
 
@@ -829,7 +738,6 @@
         <a href="#home" class="nav-link active"><i data-lucide="home"></i>Home</a>
         <a href="#about" class="nav-link"><i data-lucide="user"></i>About</a>
         <a href="#projects" class="nav-link"><i data-lucide="code-2"></i>Projects</a>
-        <a href="#contact" class="nav-link"><i data-lucide="send"></i>Contact</a>
       </nav>
     </div>
 
@@ -841,9 +749,6 @@
       <a href="https://github.com/af21i" target="_blank" rel="noopener noreferrer" class="social-button">
         <i data-lucide="github"></i>GitHub
       </a>
-      <button class="theme-toggle" id="themeToggle" type="button">
-        <i data-lucide="moon-star"></i><span>Toggle theme</span>
-      </button>
     </div>
   </aside>
 
@@ -851,7 +756,7 @@
     <main id="main-content">
       <section id="home" class="hero fade-in-section">
         <div>
-          <div class="eyebrow"><i data-lucide="cpu"></i> Computer Engineering Student at TMU</div>
+          <div class="eyebrow"><i data-lucide="cpu"></i> Computer Engineering Student at Toronto Metropolitan University</div>
           <h1>Building things across <span class="accent-name">software</span>, hardware, and data.</h1>
           <p class="typing-line">
             I’m Afeef, a Computer Engineering student who enjoys turning technical ideas into projects people can actually use. Currently focused on <span class="typed-word" id="typedWord">real-time analytics</span>.
@@ -866,14 +771,10 @@
           <div class="quick-stats" aria-label="Portfolio highlights">
             <div class="stat-card">
               <strong>7+</strong>
-              <span>technical projects across software, hardware, databases, and ML</span>
+              <span>technical projects across software, hardware, databases, embedded systems, and ML</span>
             </div>
             <div class="stat-card">
-              <strong>620K+</strong>
-              <span>historical NBA game states used in one analytics project</span>
-            </div>
-            <div class="stat-card">
-              <strong>TMU</strong>
+              <strong>Toronto Metropolitan University</strong>
               <span>Computer Engineering, hardware + software focus</span>
             </div>
           </div>
@@ -903,7 +804,7 @@
             I enjoy building things that are more than just assignments. I like when a project has a clear purpose, a polished interface, and enough technical depth to teach me something new. Recently, I’ve been especially interested in real-time analytics, predictive models, and tools that make complicated systems easier to understand visually.
           </p>
           <p>
-            Outside of coding and coursework, I’m heavily involved in student life and event planning. I’ve helped organize engineering events, mentor students, and lead initiatives that bring people together. When I’m not working on something technical, there’s a good chance I’m watching NBA games, playing chess, or spending time with my birds.
+            Outside of coding and coursework, I’m heavily involved in student life and event planning. I’ve helped organize engineering events, mentor students, and lead initiatives that bring people together. When I’m not working on something technical, there’s a good chance I’m watching NBA games or spending time with my birds.
           </p>
         </div>
       </section>
@@ -914,22 +815,11 @@
           <h2>Projects</h2>
         </div>
         <p class="section-intro">
-          A mix of software, hardware, data, and embedded projects. Use the filters to quickly narrow things down.
+          A mix of software, hardware, data, and embedded projects that reflect what I have built across coursework, personal learning, and technical exploration.
         </p>
 
-        <div class="project-toolbar">
-          <div class="filter-buttons" aria-label="Project filters">
-            <button class="filter-btn active" data-filter="all" type="button">All</button>
-            <button class="filter-btn" data-filter="software" type="button">Software</button>
-            <button class="filter-btn" data-filter="data" type="button">Data / ML</button>
-            <button class="filter-btn" data-filter="hardware" type="button">Hardware</button>
-            <button class="filter-btn" data-filter="embedded" type="button">Embedded</button>
-          </div>
-          <p class="project-count" id="projectCount">Showing all projects</p>
-        </div>
-
         <div class="project-grid" id="projectGrid">
-          <article class="project-card featured" data-category="software data">
+          <article class="project-card featured">
             <div class="featured-badge"><i data-lucide="star"></i>Featured Project</div>
             <h3>NBA Win Probability Analytics Platform</h3>
             <p>
@@ -941,7 +831,7 @@
             <a class="project-link" href="https://github.com/af21i/NBA-Win-Probability-Analytics-Platform" target="_blank" rel="noopener noreferrer">View Code <i data-lucide="arrow-up-right"></i></a>
           </article>
 
-          <article class="project-card" data-category="software">
+          <article class="project-card">
             <h3>Personal Portfolio</h3>
             <p>
               The website you are viewing right now. Designed as a responsive, interactive portfolio to showcase my technical projects, personality, and growth as a Computer Engineering student.
@@ -952,7 +842,7 @@
             <a class="project-link" href="https://github.com/af21i/af21i.github.io" target="_blank" rel="noopener noreferrer">View Code <i data-lucide="arrow-up-right"></i></a>
           </article>
 
-          <article class="project-card" data-category="software data">
+          <article class="project-card">
             <h3>Car Rental Database Management System</h3>
             <p>
               A relational database system for managing customers, vehicles, rentals, payments, and financial records. The backend uses SQL and Oracle with a Java interface, while normalization from 1NF to BCNF improves consistency and long-term maintainability.
@@ -963,7 +853,7 @@
             <a class="project-link" href="https://github.com/af21i/Car-Rental-Database-Management-System" target="_blank" rel="noopener noreferrer">View Code <i data-lucide="arrow-up-right"></i></a>
           </article>
 
-          <article class="project-card" data-category="hardware">
+          <article class="project-card">
             <h3>Central Processing Unit Design</h3>
             <p>
               A basic CPU implemented on an FPGA using VHDL. The design integrates an ALU, Mealy finite state machine, decoder, flip-flops, latches, and seven-segment display outputs for real-time visualization of CPU operations.
@@ -974,7 +864,7 @@
             <a class="project-link" href="https://github.com/af21i/Central-Process-Unit-Design" target="_blank" rel="noopener noreferrer">View Code <i data-lucide="arrow-up-right"></i></a>
           </article>
 
-          <article class="project-card" data-category="software">
+          <article class="project-card">
             <h3>Banking Application Interface System</h3>
             <p>
               A Java and JavaFX banking system designed for both managers and customers. The system applies object-oriented design principles and uses the State design pattern to manage customer membership tiers in a scalable way.
@@ -985,7 +875,7 @@
             <a class="project-link" href="https://github.com/af21i/Banking-Application-Interface-System" target="_blank" rel="noopener noreferrer">View Code <i data-lucide="arrow-up-right"></i></a>
           </article>
 
-          <article class="project-card" data-category="embedded hardware">
+          <article class="project-card">
             <h3>Robot Maze Roamer</h3>
             <p>
               An autonomous robot built with the HCS12 microcontroller to navigate a maze using real-time sensing and decision-making. A finite state machine processes sensor inputs, detects obstacles, corrects movement, and displays system status on an LCD.
@@ -996,7 +886,7 @@
             <a class="project-link" href="https://github.com/af21i/Robot-Maze-Roamer" target="_blank" rel="noopener noreferrer">View Code <i data-lucide="arrow-up-right"></i></a>
           </article>
 
-          <article class="project-card" data-category="hardware">
+          <article class="project-card">
             <h3>Personal PC Build</h3>
             <p>
               A custom PC assembled for productivity, gaming, and long-term reliability. The build focused on strong performance, clean aesthetics, careful component selection, and smooth day-to-day use.
@@ -1009,23 +899,8 @@
         </div>
       </section>
 
-      <section id="contact" class="fade-in-section">
-        <div class="contact-card">
-          <div>
-            <div class="section-title" style="margin-bottom: 0;">
-              <i data-lucide="send"></i>
-              <h2>Let’s Connect</h2>
-            </div>
-            <p>
-              I’m always open to engineering opportunities, technical projects, student leadership work, and conversations about software, hardware, data, or basketball analytics.
-            </p>
-          </div>
-          <a class="btn primary" href="mailto:sirlolking@gmail.com"><i data-lucide="mail"></i>Email Me</a>
-        </div>
-      </section>
-
       <footer>
-        Built by Afeef Islam • Designed with HTML, CSS, JavaScript, and a lot of purple glow.
+        Built by Afeef Islam • Designed with HTML, CSS, and JavaScript.
       </footer>
     </main>
   </div>
@@ -1039,11 +914,7 @@
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('section[id]');
     const scrollProgress = document.getElementById('scrollProgress');
-    const themeToggle = document.getElementById('themeToggle');
     const typedWord = document.getElementById('typedWord');
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
-    const projectCount = document.getElementById('projectCount');
     const cursor = document.getElementById('cursorGlow');
 
     function closeSidebar() {
@@ -1100,12 +971,6 @@
     updateScrollProgress();
     updateActiveNav();
 
-    themeToggle.addEventListener('click', () => {
-      body.classList.toggle('light-theme');
-      const isLight = body.classList.contains('light-theme');
-      themeToggle.querySelector('span').textContent = isLight ? 'Dark theme' : 'Light theme';
-    });
-
     const words = ['real-time analytics', 'database systems', 'FPGA design', 'embedded robotics', 'interactive dashboards'];
     let wordIndex = 0;
 
@@ -1117,27 +982,6 @@
         typedWord.style.opacity = 1;
       }, 180);
     }, 2100);
-
-    filterButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const filter = button.dataset.filter;
-        let visibleCount = 0;
-
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-
-        projectCards.forEach(card => {
-          const categories = card.dataset.category.split(' ');
-          const showCard = filter === 'all' || categories.includes(filter);
-          card.classList.toggle('hidden', !showCard);
-          if (showCard) visibleCount++;
-        });
-
-        projectCount.textContent = filter === 'all'
-          ? 'Showing all projects'
-          : `Showing ${visibleCount} ${filter} project${visibleCount === 1 ? '' : 's'}`;
-      });
-    });
 
     document.addEventListener('mousemove', e => {
       cursor.style.opacity = 1;
